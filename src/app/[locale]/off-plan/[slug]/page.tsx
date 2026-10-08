@@ -142,17 +142,17 @@ export default async function ProjectPage({ params }: PageProps<"/[locale]/off-p
           </section>
 
           <section aria-label={tProp("gallery")}>
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <ul className="grid grid-cols-3 gap-3">
               {project.gallery.map((src, i) => (
                 <li
                   key={src}
-                  className={`relative overflow-hidden rounded-xl bg-sand ${i === 0 ? "col-span-2 row-span-2 aspect-square sm:aspect-auto" : "aspect-square"}`}
+                  className={`relative overflow-hidden rounded-xl bg-sand ${i === 0 ? "col-span-3 aspect-[4/3] sm:col-span-2 sm:row-span-3 sm:aspect-auto" : "aspect-[4/3]"}`}
                 >
                   <Image
                     src={src}
                     alt={tCommon("photoAlt", { title: project.name, index: i + 1 })}
                     fill
-                    sizes={i === 0 ? "(min-width: 640px) 40vw, 100vw" : "(min-width: 640px) 20vw, 50vw"}
+                    sizes={i === 0 ? "(min-width: 1024px) 40vw, (min-width: 640px) 66vw, 100vw" : "(min-width: 1024px) 20vw, 33vw"}
                     className="object-cover"
                   />
                 </li>

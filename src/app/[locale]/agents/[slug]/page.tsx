@@ -105,7 +105,7 @@ export default async function AgentPage({ params }: PageProps<"/[locale]/agents/
                     {agent.specialties.map((slugArea) => {
                       const area = getArea(slugArea);
                       return area ? (
-                        <Link key={slugArea} href={`/areas/${slugArea}`} className="text-muted-foreground underline-offset-4 hover:text-navy hover:underline">
+                        <Link key={slugArea} href={`/areas/${slugArea}`} className="text-muted-foreground underline decoration-gold/50 underline-offset-4 transition-colors hover:text-navy hover:decoration-gold">
                           {area.name[locale]}
                         </Link>
                       ) : null;

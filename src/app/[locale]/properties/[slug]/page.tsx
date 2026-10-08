@@ -74,7 +74,10 @@ export default async function PropertyPage({ params }: PageProps<"/[locale]/prop
     getTranslations({ locale, namespace: "completion" }),
     getTranslations({ locale, namespace: "forms" }),
   ]);
-  const tl = await getTranslations({ locale, namespace: "listings" });
+  const [tl, tAreas] = await Promise.all([
+    getTranslations({ locale, namespace: "listings" }),
+    getTranslations({ locale, namespace: "areas" }),
+  ]);
 
   const area = getArea(property.area);
   const agent = getAgent(property.agentId);
@@ -188,16 +191,18 @@ export default async function PropertyPage({ params }: PageProps<"/[locale]/prop
               <h2 id="facts-title" className="font-display text-2xl text-navy sm:text-3xl">
                 {t("keyFacts")}
               </h2>
-              <dl className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-navy/8 ring-1 ring-navy/8 sm:grid-cols-3">
-                {facts.map((fact) => (
-                  <div key={fact.label} className="bg-white p-4 sm:p-5">
-                    <dt className="text-xs text-muted-foreground">{fact.label}</dt>
-                    <dd className="mt-1 text-sm font-semibold text-navy sm:text-base" dir={fact.ltr ? "ltr" : undefined}>
-                      {fact.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-6 overflow-hidden rounded-2xl bg-white ring-1 ring-navy/8">
+                <dl className="-me-px -mb-px grid grid-cols-2 sm:grid-cols-3">
+                  {facts.map((fact) => (
+                    <div key={fact.label} className="border-e border-b border-navy/8 p-4 sm:p-5">
+                      <dt className="text-xs text-muted-foreground">{fact.label}</dt>
+                      <dd className="mt-1 text-sm font-semibold text-navy sm:text-base" dir={fact.ltr ? "ltr" : undefined}>
+                        {fact.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             </section>
 
             <section aria-labelledby="description-title">
@@ -301,8 +306,8 @@ export default async function PropertyPage({ params }: PageProps<"/[locale]/prop
                   {t("similar")}
                 </h2>
               </div>
-              <Link href={purposeHref} className="btn-outline self-start sm:self-auto">
-                {tl("title")}
+              <Link href={area ? `${purposeHref}&area=${area.slug}` : purposeHref} className="btn-outline self-start sm:self-auto">
+                {area ? tAreas("viewListings", { area: area.name[locale] }) : tl("title")}
                 <ArrowRight className="size-4 rtl-flip" aria-hidden="true" />
               </Link>
             </div>

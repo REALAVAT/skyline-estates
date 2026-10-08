@@ -59,7 +59,7 @@ export async function Footer({ locale }: { locale: Locale }) {
         className="pointer-events-none absolute -top-40 end-[-10%] size-[520px] rounded-full bg-gold/10 blur-3xl"
       />
       <div className="container-luxe relative grid gap-12 pt-20 pb-12 md:grid-cols-2 lg:grid-cols-12">
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-3">
           <Logo light />
           <p className="mt-6 max-w-sm text-sm leading-relaxed">{t("tagline")}</p>
           <ul className="mt-8 flex gap-2">
@@ -118,7 +118,7 @@ export async function Footer({ locale }: { locale: Locale }) {
           </ul>
         </div>
 
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-3">
           <h2 className="font-sans text-xs font-semibold tracking-[0.2em] text-gold-light uppercase rtl:tracking-normal">
             {t("contact")}
           </h2>
@@ -138,7 +138,7 @@ export async function Footer({ locale }: { locale: Locale }) {
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-3 break-all hover:text-white">
+              <a href={`mailto:${site.email}`} className="flex items-center gap-3 [overflow-wrap:anywhere] hover:text-white">
                 <Mail className="size-4 shrink-0 text-gold" aria-hidden="true" />
                 {site.email}
               </a>
