@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Skyline Estates
 
-## Getting Started
+A bilingual (English and Arabic) website for a luxury real estate agency in Dubai. Visitors can browse homes for sale and rent, explore off-plan projects and neighbourhood guides, compare properties side by side and get in touch with an agent, all in a polished, fast and fully responsive experience.
 
-First, run the development server:
+**Live demo:** [realestate.ahmadkhajeh.com](https://realestate.ahmadkhajeh.com)
+
+> Demo project by Ahmad Khajeh — [ahmadkhajeh.com](https://ahmadkhajeh.com). Skyline Estates is a fictional agency; listings, prices and people are illustrative.
+
+![Home page](docs/screenshots/home.jpg)
+
+## Highlights
+
+- **English and Arabic** with a true right-to-left layout, localized URLs (`/en`, `/ar`) and an instant language switch on every page.
+- **AED / USD currency switcher** that updates every price on the site and is remembered between visits.
+- **Property search** with filters for purpose, area, type, price, bedrooms, bathrooms, size and amenities. Every filter lives in the URL, so searches can be shared and bookmarked.
+- **Interactive map** synced with the results: hover a listing to highlight its pin, or click a price pin to bring the listing into view. On phones the map opens full screen.
+- **Rich property pages** with a photo gallery and lightbox, key facts, amenities, floor plan, a location map with nearby schools, malls and metro stations, a mortgage calculator, the listing agent and an inquiry form.
+- **Off-plan projects** with payment plans and handover dates, **area guides** with lifestyle highlights and average prices, and **agent profiles** with their active listings.
+- **Favorites and compare**: save homes with one tap and compare up to three side by side.
+- **Lead capture** forms for viewings, valuations and general enquiries, with validation in both languages and a floating WhatsApp button.
+- **Search-engine ready**: per-page titles and descriptions in both languages, social sharing images, structured data for listings and the agency, a sitemap and language alternates.
+- **Accessible and fast**: keyboard friendly, screen-reader labelled and optimised for Core Web Vitals.
+
+![Listings with synced map](docs/screenshots/listings-map.jpg)
+
+![Property page in Arabic](docs/screenshots/property-detail-ar.jpg)
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) (App Router) and React with TypeScript
+- [Tailwind CSS](https://tailwindcss.com) v4 and [shadcn/ui](https://ui.shadcn.com) components
+- [next-intl](https://next-intl.dev) for routing, translations and RTL
+- [Leaflet](https://leafletjs.com) with OpenStreetMap tiles
+- [React Hook Form](https://react-hook-form.com) and [Zod](https://zod.dev) for forms
+- [Resend](https://resend.com) for email delivery
+- Photography from [Unsplash](https://unsplash.com)
+
+## Run locally
+
+Requires Node.js 20.9 or newer.
 
 ```bash
+git clone https://github.com/REALAVAT/skyline-estates.git
+cd skyline-estates
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open [http://localhost:3000](http://localhost:3000).
