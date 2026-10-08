@@ -273,6 +273,27 @@
   color: var(--color-gold-light);
   transform: translate(-50%, -100%) scale(1.12);
 }
+.price-pin--cluster .price-pin__label {
+  gap: 6px;
+  background: var(--color-navy);
+  color: #ffffff;
+  cursor: pointer;
+}
+.price-pin--cluster .price-pin__count {
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--color-gold);
+  color: var(--color-navy);
+  font-size: 11px;
+}
+.price-pin--cluster:hover .price-pin__label,
+.price-pin--cluster:focus-visible .price-pin__label {
+  transform: translate(-50%, -100%) scale(1.08);
+}
 .place-pin,
 .home-pin {
   background: transparent;

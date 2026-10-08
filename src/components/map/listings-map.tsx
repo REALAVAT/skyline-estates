@@ -1,10 +1,10 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import L from "leaflet";
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { formatPrice, formatPriceShort, type Currency } from "@/lib/format";
@@ -20,6 +20,10 @@ interface ListingsMapProps {
 }
 
 const DUBAI_CENTER: L.LatLngExpression = [25.13, 55.2];
+// Price pins are ~64x26px pills, so pins closer than this would overlap.
+const CLUSTER_DX = 68;
+const CLUSTER_DY = 30;
+const CLUSTER_MAX_ZOOM = 16;
 
 function priceIcon(label: string, active: boolean) {
   return L.divIcon({
@@ -106,6 +110,76 @@ function PriceMarker({
   );
 }
 
+function groupOverlapping(map: L.Map, zoom: number, properties: PropertySummary[], activeId: string | null) {
+  if (zoom >= CLUSTER_MAX_ZOOM) return properties.map((p) => [p]);
+  const groups: { members: PropertySummary[]; x: number; y: number; locked: boolean }[] = [];
+  for (const p of properties) {
+    const { x, y } = map.project(p.coordinates, zoom);
+    const isActive = p.id === activeId;
+    const group = isActive
+      ? undefined
+      : groups.find((g) => !g.locked && Math.abs(g.x - x) < CLUSTER_DX && Math.abs(g.y - y) < CLUSTER_DY);
+    if (group) group.members.push(p);
+    else groups.push({ members: [p], x, y, locked: isActive });
+  }
+  return groups.map((g) => g.members);
+}
+
+function ClusterMarker({ members, currency }: { members: PropertySummary[]; currency: Currency }) {
+  const map = useMap();
+  const t = useTranslations("listings");
+  const bounds = useMemo(() => L.latLngBounds(members.map((p) => p.coordinates)), [members]);
+  const minPrice = formatPriceShort(Math.min(...members.map((p) => p.price)), currency);
+  const icon = useMemo(
+    () =>
+      L.divIcon({
+        className: "price-pin price-pin--cluster",
+        html: `<span class="price-pin__label"><span class="price-pin__count">${members.length}</span>${minPrice}+</span>`,
+        iconSize: [0, 0],
+        iconAnchor: [0, 0],
+      }),
+    [members.length, minPrice],
+  );
+
+  return (
+    <Marker
+      position={bounds.getCenter()}
+      icon={icon}
+      keyboard
+      title={t("clusterTitle", { count: members.length, price: minPrice })}
+      eventHandlers={{
+        click: () => map.flyToBounds(bounds, { padding: [72, 72], maxZoom: CLUSTER_MAX_ZOOM, duration: 0.5 }),
+      }}
+    />
+  );
+}
+
+function ClusteredMarkers({
+  properties,
+  currency,
+  activeId,
+  onSelect,
+}: Pick<ListingsMapProps, "properties" | "currency" | "activeId" | "onSelect">) {
+  const map = useMap();
+  const [zoom, setZoom] = useState(() => map.getZoom());
+  useMapEvents({ zoomend: () => setZoom(map.getZoom()) });
+  const groups = useMemo(() => groupOverlapping(map, zoom, properties, activeId), [map, zoom, properties, activeId]);
+
+  return groups.map((members) =>
+    members.length === 1 ? (
+      <PriceMarker
+        key={members[0].id}
+        property={members[0]}
+        currency={currency}
+        active={members[0].id === activeId}
+        onSelect={onSelect}
+      />
+    ) : (
+      <ClusterMarker key={members.map((p) => p.id).join("-")} members={members} currency={currency} />
+    ),
+  );
+}
+
 export default function ListingsMap({ properties, currency, activeId, onSelect, className }: ListingsMapProps) {
   const t = useTranslations("listings");
   return (
@@ -114,9 +188,7 @@ export default function ListingsMap({ properties, currency, activeId, onSelect, 
         <TileLayer url={TILE_URL} attribution={TILE_ATTRIBUTION} maxZoom={TILE_MAX_ZOOM} />
         <FitBounds properties={properties} />
         <InvalidateOnResize />
-        {properties.map((p) => (
-          <PriceMarker key={p.id} property={p} currency={currency} active={p.id === activeId} onSelect={onSelect} />
-        ))}
+        <ClusteredMarkers properties={properties} currency={currency} activeId={activeId} onSelect={onSelect} />
       </MapContainer>
     </div>
   );

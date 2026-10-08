@@ -233,6 +233,7 @@
     "shareSearch": "نسخ الرابط",
     "linkCopied": "تم نسخ رابط البحث",
     "mapLabel": "خريطة العقارات",
+    "clusterTitle": "{count} عقارات تبدأ من {price}. قم بالتكبير لعرضها جميعاً",
     "plus": "{value}+"
   },
   "property": {

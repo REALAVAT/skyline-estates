@@ -233,6 +233,7 @@
     "shareSearch": "Copy link",
     "linkCopied": "Search link copied",
     "mapLabel": "Map of properties",
+    "clusterTitle": "{count} properties from {price}. Zoom in to see them all",
     "plus": "{value}+"
   },
   "property": {
