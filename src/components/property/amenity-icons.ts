@@ -1,0 +1,38 @@
+import {
+  Baby,
+  BellRing,
+  BookOpen,
+  Building2,
+  Car,
+  Cpu,
+  Dumbbell,
+  Flower2,
+  PawPrint,
+  ShieldCheck,
+  Sofa,
+  Sun,
+  Umbrella,
+  Waves,
+  WavesLadder,
+  type LucideIcon,
+} from "lucide-react";
+import type { AmenityKey } from "@/types";
+
+export const amenityIcons: Record<AmenityKey, LucideIcon> = {
+  pool: WavesLadder,
+  privatePool: WavesLadder,
+  gym: Dumbbell,
+  parking: Car,
+  balcony: Sun,
+  seaView: Waves,
+  burjView: Building2,
+  concierge: BellRing,
+  maidRoom: Sofa,
+  privateGarden: Flower2,
+  smartHome: Cpu,
+  beachAccess: Umbrella,
+  kidsPlay: Baby,
+  security: ShieldCheck,
+  study: BookOpen,
+  petFriendly: PawPrint,
+};
