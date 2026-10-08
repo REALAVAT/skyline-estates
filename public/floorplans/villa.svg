@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="800" height="560" fill="#faf8f5"/>
+  <g stroke="#e8e0d3" stroke-width="1">
+    <path d="M0 40h800M0 80h800M0 120h800M0 160h800M0 200h800M0 240h800M0 280h800M0 320h800M0 360h800M0 400h800M0 440h800M0 480h800M0 520h800"/>
+    <path d="M40 0v560M80 0v560M120 0v560M160 0v560M200 0v560M240 0v560M280 0v560M320 0v560M360 0v560M400 0v560M440 0v560M480 0v560M520 0v560M560 0v560M600 0v560M640 0v560M680 0v560M720 0v560M760 0v560"/>
+  </g>
+  <!-- garden + pool -->
+  <rect x="40" y="400" width="720" height="120" fill="#eef1ea" stroke="none"/>
+  <rect x="300" y="430" width="300" height="70" rx="6" fill="#dfe9ef" stroke="#7d9bb0" stroke-width="2"/>
+  <path d="M320 455c20-8 40 8 60 0s40 8 60 0 40 8 60 0 40 8 60 0" stroke="#9db6c6" stroke-width="1.5"/>
+  <g stroke="#9aae8c" stroke-width="2"><circle cx="100" cy="460" r="26"/><circle cx="170" cy="470" r="18"/><circle cx="700" cy="455" r="24"/><circle cx="650" cy="480" r="14"/></g>
+  <g stroke="#b9a37a" stroke-width="2">
+    <rect x="70" y="70" width="200" height="70" rx="10"/><rect x="70" y="70" width="200" height="18" rx="6"/>
+    <rect x="70" y="160" width="60" height="120" rx="10"/>
+    <rect x="160" y="180" width="90" height="70" rx="6"/>
+    <rect x="320" y="90" width="150" height="80" rx="8"/>
+    <circle cx="340" cy="80" r="9"/><circle cx="395" cy="80" r="9"/><circle cx="450" cy="80" r="9"/><circle cx="340" cy="180" r="9"/><circle cx="395" cy="180" r="9"/><circle cx="450" cy="180" r="9"/>
+    <path d="M320 240h170v26H320zM490 240v110h-26V266"/>
+    <rect x="360" y="300" width="80" height="44" rx="4"/>
+    <rect x="560" y="70" width="170" height="130" rx="8"/><rect x="560" y="70" width="170" height="28" rx="6"/>
+    <rect x="560" y="250" width="150" height="100" rx="8"/><rect x="560" y="250" width="150" height="24" rx="6"/>
+    <rect x="200" y="300" width="40" height="60" rx="16"/>
+    <g transform="translate(330 405)"><rect width="34" height="18" rx="4"/><rect x="60" width="34" height="18" rx="4"/><rect x="200" width="34" height="18" rx="4"/></g>
+  </g>
+  <g stroke="#0b1f3a" stroke-width="5">
+    <path d="M290 40v80M290 176v104M290 336v64"/>
+    <path d="M520 40v170M520 266v134"/>
+    <path d="M520 220h20M596 220h164"/>
+    <path d="M40 290h100M196 290h94"/>
+    <path d="M150 290v110"/>
+  </g>
+  <g stroke="#c8a96a" stroke-width="2">
+    <path d="M290 120a56 56 0 0 1 56 56"/><path d="M290 176h56" stroke-dasharray="4 4"/>
+    <path d="M520 210a56 56 0 0 0 -56 56"/><path d="M464 266h56" stroke-dasharray="4 4"/>
+    <path d="M540 220a56 56 0 0 0 56 56"/><path d="M596 220v56" stroke-dasharray="4 4"/>
+    <path d="M140 290a56 56 0 0 0 56 56"/><path d="M196 290v56" stroke-dasharray="4 4"/>
+    <path d="M290 280a56 56 0 0 0 56 56" />
+  </g>
+  <!-- terrace sliders -->
+  <path d="M40 40h720v360H40z" stroke="#0b1f3a" stroke-width="10"/>
+  <g stroke="#faf8f5" stroke-width="7"><path d="M320 400h180M560 400h150M60 400h70"/></g>
+  <g stroke="#0b1f3a" stroke-width="1.5"><path d="M320 397h180M320 403h180M560 397h150M560 403h150M60 397h70M60 403h70"/></g>
+  <g stroke="#faf8f5" stroke-width="6"><path d="M90 40h160M580 40h140M760 90v100M40 120v120"/></g>
+  <g stroke="#0b1f3a" stroke-width="1.5"><path d="M90 37h160M90 43h160M580 37h140M580 43h140M757 90v100M763 90v100M37 120v120M43 120v120"/></g>
+</svg>
