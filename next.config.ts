@@ -7,7 +7,9 @@ const nextConfig: NextConfig = {
   agentRules: false,
   poweredByHeader: false,
   images: {
-    formats: ["image/avif", "image/webp"],
+    loader: "custom",
+    qualities: [60, 65, 75],
+    loaderFile: "./src/lib/image-loader.ts",
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
   turbopack: {
