@@ -14,14 +14,14 @@ export async function ProjectCard({ project, locale }: { project: Project; local
   const developer = getDeveloper(project.developerId);
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-navy/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-lift">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-navy/5 transition-shadow duration-500 hover:shadow-lift">
       <div className="relative aspect-[16/11] overflow-hidden bg-sand">
         <Image
           src={project.image}
           alt={project.name}
           fill
           sizes="(min-width: 1280px) 30vw, (min-width: 768px) 45vw, 100vw"
-          className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
+          className="object-cover transform-gpu transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
         <span className="absolute start-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy">
@@ -45,7 +45,9 @@ export async function ProjectCard({ project, locale }: { project: Project; local
           </span>
           <span className="flex items-center gap-1.5">
             <CalendarClock className="size-3.5 text-gold-deep" aria-hidden="true" />
-            {t("handover")}: <span dir="ltr">{project.handover}</span>
+            <span>
+              {t("handover")}: <span dir="ltr">{project.handover}</span>
+            </span>
           </span>
         </div>
         <div className="flex items-end justify-between gap-3">

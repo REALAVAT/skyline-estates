@@ -61,7 +61,7 @@ export function PropertyCard({
       onMouseLeave={() => onHoverChange?.(null)}
       onFocus={() => setArmed(true)}
       className={cn(
-        "group relative flex overflow-hidden rounded-2xl bg-card shadow-soft ring-1 ring-navy/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-lift",
+        "group relative flex overflow-hidden rounded-2xl bg-card shadow-soft ring-1 ring-navy/5 transition-shadow duration-500 hover:shadow-lift",
         isList ? "flex-col sm:flex-row" : "flex-col",
         highlighted && "ring-2 ring-gold",
         className,
@@ -73,23 +73,25 @@ export function PropertyCard({
           isList ? "aspect-[4/3] sm:aspect-auto sm:w-[42%] sm:min-h-64" : "aspect-[4/3]",
         )}
       >
-        {slides.map((src, i) => {
-          if (i > 0 && !armed) return null;
-          return (
-            <Image
-              key={src + i}
-              src={src}
-              alt={t("photoAlt", { title, index: i + 1 })}
-              fill
-              sizes={sizes}
-              priority={priority && i === 0}
-              className={cn(
-                "object-cover transition-[opacity,transform] duration-700 ease-[var(--ease-luxe)] group-hover:scale-[1.04]",
-                i === index ? "opacity-100" : "opacity-0",
-              )}
-            />
-          );
-        })}
+        <div className="absolute inset-0 transform-gpu transition-transform duration-700 ease-[var(--ease-luxe)] will-change-transform group-hover:scale-[1.04]">
+          {slides.map((src, i) => {
+            if (i > 0 && !armed) return null;
+            return (
+              <Image
+                key={src + i}
+                src={src}
+                alt={t("photoAlt", { title, index: i + 1 })}
+                fill
+                sizes={sizes}
+                priority={priority && i === 0}
+                className={cn(
+                  "object-cover transition-opacity duration-500",
+                  i === index ? "opacity-100" : "opacity-0",
+                )}
+              />
+            );
+          })}
+        </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/55 via-transparent to-navy/10" />
 
         <div className="absolute start-3 top-3 z-10 flex flex-wrap gap-1.5">

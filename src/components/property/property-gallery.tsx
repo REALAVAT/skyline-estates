@@ -46,7 +46,7 @@ export function PropertyGallery({ images, title }: { images: string[]; title: st
               priority={i === 0}
               quality={i === 0 ? 60 : 55}
               sizes={i === 0 ? "(min-width: 768px) 50vw, 100vw" : "25vw"}
-              className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.04]"
+              className="object-cover transform-gpu transition-transform duration-700 ease-luxe group-hover:scale-[1.04]"
             />
             <span className="absolute inset-0 bg-navy/0 transition-colors duration-500 group-hover:bg-navy/10" />
           </button>

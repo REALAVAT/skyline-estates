@@ -46,9 +46,9 @@ export async function PopularAreas() {
                     alt={area.name[locale]}
                     fill
                     sizes={i === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"}
-                    className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
+                    className="object-cover transform-gpu transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/40 to-navy/5" />
                   <div className="relative mt-auto flex w-full items-end justify-between gap-4 p-6">
                     <div>
                       <p className="text-xs font-medium tracking-[0.18em] text-gold-light uppercase rtl:tracking-normal">

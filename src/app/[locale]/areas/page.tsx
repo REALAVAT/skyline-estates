@@ -48,7 +48,7 @@ export default async function AreasPage({ params }: PageProps<"/[locale]/areas">
                       alt={area.name[locale]}
                       fill
                       sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-cover transition-transform duration-[1.2s] ease-luxe group-hover:scale-105"
+                      className="object-cover transform-gpu transition-transform duration-[1.2s] ease-luxe group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy/75 via-navy/10 to-transparent" />
                     <div className="absolute inset-x-6 bottom-6 flex items-end justify-between gap-4 text-white">

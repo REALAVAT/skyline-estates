@@ -26,7 +26,7 @@ export async function Insights() {
                     alt=""
                     fill
                     sizes="(min-width: 768px) 30vw, 100vw"
-                    className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
+                    className="object-cover transform-gpu transition-transform duration-[1.2s] ease-[var(--ease-luxe)] group-hover:scale-105"
                   />
                   <span className="absolute start-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy">
                     {post.category[locale]}

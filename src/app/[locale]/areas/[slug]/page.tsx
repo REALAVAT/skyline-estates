@@ -261,7 +261,7 @@ export default async function AreaPage({ params }: PageProps<"/[locale]/areas/[s
                     alt=""
                     fill
                     sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                    className="object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover opacity-80 transform-gpu transition-transform duration-700 group-hover:scale-105"
                   />
                   <span className="absolute inset-0 bg-gradient-to-t from-navy/85 to-transparent" />
                   <span className="absolute inset-x-5 bottom-5 font-display text-2xl text-white">{a.name[locale]}</span>

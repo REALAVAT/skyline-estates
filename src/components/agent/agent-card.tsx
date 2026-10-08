@@ -13,14 +13,14 @@ export async function AgentCard({ agent, locale }: { agent: Agent; locale: Local
   const wa = `https://wa.me/${agent.whatsapp}?text=${encodeURIComponent(t("whatsappGeneric", { name }))}`;
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-navy/5 transition-all duration-500 hover:-translate-y-1 hover:shadow-lift">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-soft ring-1 ring-navy/5 transition-shadow duration-500 hover:shadow-lift">
       <div className="relative aspect-[4/5] overflow-hidden bg-sand">
         <Image
           src={agent.photo}
           alt={name}
           fill
           sizes="(min-width: 1280px) 22vw, (min-width: 640px) 45vw, 100vw"
-          className="object-cover object-top grayscale-[25%] transition-all duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
+          className="object-cover object-top grayscale-[25%] transform-gpu transition-[transform,filter] duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
         <div className="absolute inset-x-5 bottom-5 text-white">
